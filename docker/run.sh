@@ -1,1 +1,1 @@
-docker run -dp 3000:3000 psh
+docker run -d -p 5000:5000 psh-docker-image

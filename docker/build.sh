@@ -1,1 +1,1 @@
-docker build -t psh .
+docker build -t psh-docker-image .

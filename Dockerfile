@@ -10,10 +10,10 @@ COPY . /app/server
 WORKDIR /app/server
 
 # 필요한 의존성 file들 설치
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # 환경 설정 세팅
 # RUN python setup.py install
 
 # container가 구동되면 실행
-ENTRYPOINT ["python", "run.py", "false", "3000"]
+ENTRYPOINT ["python", "run.py", "True", "0.0.0.0", "5000"]

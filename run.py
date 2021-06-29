@@ -4,8 +4,9 @@ import sys
 if __name__=="__main__":
   print('START - POOK SHIN HAN')
 
-  if len(sys.argv) == 3:
+  if len(sys.argv) == 4:
     debug = sys.argv[1]
-    port = sys.argv[2]
+    host = sys.argv[2]
+    port = sys.argv[3]
     
-    app.run(debug=debug, port=port)
+    app.run(host, port=port, debug=debug)

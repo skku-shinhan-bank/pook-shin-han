@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from src.lib.review_comment_generator import ReviewCommentGenertator
 
 #Flask 객체 인스턴스 생성
@@ -10,4 +10,11 @@ def index():
 
 @app.route('/reviews', methods=('POST', ))
 def review():
-  return ReviewCommentGenertator.generate(0)
+  review = request.json['review']
+
+  print(review)
+
+  return jsonify({
+    'review': review,
+    'comment': ReviewCommentGenertator.generate(0),
+  })
