@@ -1,4 +1,4 @@
-from src.app import app
+from src.app import App
 import sys
 
 if __name__=="__main__":
@@ -9,4 +9,5 @@ if __name__=="__main__":
     host = sys.argv[2]
     port = sys.argv[3]
     
-    app.run(host, port=port, debug=debug)
+    app = App()
+    app.run(host, port=port, debug=(debug == 'True'))

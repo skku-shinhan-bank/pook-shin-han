@@ -12,8 +12,15 @@ WORKDIR /app/server
 # 필요한 의존성 file들 설치
 RUN pip install -r requirements.txt
 
+RUN export FLASK_ENV=production
+
 # 환경 설정 세팅
 # RUN python setup.py install
 
+# For KoBERT
+RUN pip install --no-cache-dir torch
+RUN pip install mxnet gluonnlp pandas tqdm sentencepiece transformers
+RUN pip install ./KoBERT
+
 # container가 구동되면 실행
-ENTRYPOINT ["python", "run.py", "True", "0.0.0.0", "5000"]
+ENTRYPOINT ["python", "run.py", "False", "0.0.0.0", "5000"]

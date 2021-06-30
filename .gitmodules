@@ -1,0 +1,6 @@
+[submodule "charm_shin_han"]
+	path = charm_shin_han
+	url = https://github.com/skku-shinhan-bank/charm_shin_han.git
+[submodule "KoBERT"]
+	path = KoBERT
+	url = https://github.com/SKTBrain/KoBERT.git
