@@ -19,12 +19,7 @@ RUN export FLASK_ENV=production
 
 # For KoBERT
 RUN pip install --no-cache-dir torch
-RUN pip install mxnet
-RUN pip install gluonnlp 
-RUN pip install pandas 
-RUN pip install tqdm 
-RUN pip install sentencepiece 
-RUN pip install transformers
+RUN pip install gluonnlp pandas tqdm sentencepiece transformers mxnet
 RUN pip install ./KoBERT
 
 # container가 구동되면 실행
