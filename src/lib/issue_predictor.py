@@ -11,7 +11,7 @@ class IssuePredictor:
     print('1. Get KoBERT model')
     device = torch.device('cpu')
     bert_model, vocab = get_pytorch_kobert_model()
-    model = KoBERTClassifier(bert_model, dr_rate=0.5, num_classes=9)
+    model = KoBERTClassifier(bert_model, dr_rate=0.5, num_classes=5)
     print('2. Load KoBERT Classifier Model')
     check_point = torch.load(model_path, map_location=device)
     model.load_state_dict(check_point)
@@ -33,9 +33,20 @@ class IssuePredictor:
     unseen_test = [[review,10]]
     test_set = KoBERTDataset(unseen_test, 0, 1, self.tokenizer, max_len, True, False)
     test_input = torch.utils.data.DataLoader(test_set, batch_size = batch_size, num_workers=num_workers)
+
+    result = None
+
     for batch_id, (token_ids, valid_length,segment_ids, label) in enumerate(test_input):
       token_ids = token_ids.long().to(self.device)
       segment_ids = segment_ids.long().to(self.device)
-      out = self.model(token_ids, valid_length, segment_ids)
-      print(out)
-    return 0
+      result = self.model(token_ids, valid_length, segment_ids)
+
+    largest = -999999
+    issueId = -1
+
+    for issueIndex, val in enumerate(result[0]):
+      if largest < val:
+        largest = val
+        issueId = issueIndex
+
+    return issueId

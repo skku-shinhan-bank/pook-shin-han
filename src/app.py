@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 class App:
   def __init__(self):
-    issuePredictor = IssuePredictor('model/kobert_issue_classification_test.pt')
+    issuePredictor = IssuePredictor('model/kobert_issue_classification.pt')
 
     #Flask 객체 인스턴스 생성
     app = Flask(__name__)
