@@ -43,10 +43,13 @@ class IssuePredictor:
 
     largest = -999999
     issueId = -1
+    total_issue_info = []
 
     for issueIndex, val in enumerate(result[0]):
+      value = val.item()
       if largest < val:
         largest = val
         issueId = issueIndex
+      total_issue_info.append((issueIndex, value))
 
-    return issueId
+    return (issueId, total_issue_info)

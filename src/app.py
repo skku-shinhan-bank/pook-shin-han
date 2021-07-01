@@ -20,13 +20,14 @@ class App:
     def review():
       review = request.json['review']
 
-      issueClass = issuePredictor.predict(review)
+      issueId, total_issue_info = issuePredictor.predict(review)
 
       return jsonify({
         'status': 200,
         'body': {
           'review': review,
-          'comment': ReviewCommentGenertator.generate(issueClass),
+          'comment': ReviewCommentGenertator.generate(issueId),
+          'total_issue_info': total_issue_info,
         }
       })
     self.app = app
