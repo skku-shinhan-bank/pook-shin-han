@@ -1,0 +1,1 @@
+sudo scp -i Downloads/LightsailDefaultKey-ap-northeast-2.pem ./projects/shinhan-bank/pook-shin-han/model/kobert_issue_classification.pt ubuntu@3.37.134.141:~
