@@ -29,3 +29,4 @@ class IssuePredictor:
                 max_probabillity_class = class_id
 
         return max_probabillity_class, probability_per_class[0]
+        
