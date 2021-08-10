@@ -15,3 +15,4 @@ class ReviewCommentGenertator:
     elif issueId == 4:  #칭찬
         return common_message + '안녕하세요, 기타 문제 인가요??' + ReviewCommentGenertator.__goodByeMessage
     return ''
+    
