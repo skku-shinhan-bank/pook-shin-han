@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 class App:
   def __init__(self):
-    issuePredictor = IssuePredictor('model/kobert_issue_classification.pt')
+    issuePredictor = IssuePredictor('model/koelectra_classification_model_v2.pth')
 
     #Flask 객체 인스턴스 생성
     app = Flask(__name__)
@@ -13,11 +13,11 @@ class App:
     CORS(app)
 
     @app.route('/', methods=('GET', ))
-    def index():
+    def index_route():
       return 'SKKU Team Shinhan Bank'
 
     @app.route('/reviews', methods=('POST', ))
-    def review():
+    def review_route():
       review = request.json['review']
 
       issueId, total_issue_info = issuePredictor.predict(review)
