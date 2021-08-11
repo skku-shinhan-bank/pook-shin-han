@@ -1,0 +1,1 @@
+scp -i C:\Users\sunrisehouse\Downloads\test.pem C:\Users\sunrisehouse\projects\skku-shinhan-bank\pook-shin-han\model\koelectra_classification_model_v2.pth ubuntu@ec2-3-35-136-93.ap-northeast-2.compute.amazonaws.com:~
