@@ -1,3 +1,4 @@
 flask
 flask_cors
 git+https://github.com/skku-shinhan-bank/koelectra_classification.git
+git+https://github.com/skku-shinhan-bank/kobart_generation.git

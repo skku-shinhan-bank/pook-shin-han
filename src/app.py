@@ -6,7 +6,8 @@ from datetime import datetime
 
 class App:
   def __init__(self):
-    issuePredictor = IssuePredictor('model/koelectra_classification_model_v2.pth')
+    issue_predictor = IssuePredictor('model/koelectra_classification_model_v2.pth')
+    comment_generator = ReviewCommentGenertator('model/kobart_generator_model_v1.pth')
 
     #Flask 객체 인스턴스 생성
     app = Flask(__name__)
@@ -21,7 +22,7 @@ class App:
     def review_route():
       review = request.json['review']
 
-      issueId, total_issue_info = issuePredictor.predict(review)
+      issue_id, total_issue_info = issue_predictor.predict(review)
       now = datetime.now()
       write_time = now.strftime("%Y/%m/%d %H:%M")
 
@@ -29,7 +30,7 @@ class App:
         'status': 200,
         'body': {
           'review': review,
-          'comment': ReviewCommentGenertator.generate(issueId),
+          'comment': comment_generator.generate(issue_id, review),
           'total_issue_info': total_issue_info,
           'write_time': write_time,
         }

@@ -1,0 +1,1 @@
+pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html pytorch_lightning
