@@ -33,6 +33,7 @@ class App:
           'comment': comment_generator.generate(review, issue_id),
           'total_issue_info': total_issue_info,
           'write_time': write_time,
+          'issue_id': issue_id,
         }
       })
     self.app = app
