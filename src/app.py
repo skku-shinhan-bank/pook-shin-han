@@ -30,7 +30,7 @@ class App:
         'status': 200,
         'body': {
           'review': review,
-          'comment': comment_generator.generate(issue_id, review),
+          'comment': comment_generator.generate(review, issue_id),
           'total_issue_info': total_issue_info,
           'write_time': write_time,
         }
