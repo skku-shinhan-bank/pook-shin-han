@@ -18,7 +18,7 @@ class App:
     def index_route():
       return 'SKKU Team Shinhan Bank'
 
-    @app.route('/reviews', methods=('POST', ))
+    @app.route('/reviews/comment', methods=('POST', ))
     def review_route():
       review = request.json['review']
 
@@ -30,12 +30,32 @@ class App:
         'status': 200,
         'body': {
           'review': review,
-          'comments': comment_generator.generate(review, issue_id),
+          'comment': comment_generator.generate(review, issue_id),
           'total_issue_info': total_issue_info,
           'write_time': write_time,
           'issue_id': issue_id,
         }
       })
+
+    @app.route('/reviews/comments', methods=('POST', ))
+    def review_route():
+      review = request.json['review']
+
+      issue_id, total_issue_info = issue_predictor.predict(review)
+      now = datetime.now()
+      write_time = now.strftime("%Y/%m/%d %H:%M")
+
+      return jsonify({
+        'status': 200,
+        'body': {
+          'review': review,
+          'comments': comment_generator.generate_nbest(review, issue_id),
+          'total_issue_info': total_issue_info,
+          'write_time': write_time,
+          'issue_id': issue_id,
+        }
+      })
+
     self.app = app
   
   def run(self, host, port, debug):
