@@ -18,7 +18,8 @@ class ReviewCommentGenertator:
         return self.comment_generator.print_comment(review,issue)
 
     def generate_nbest(self, review, issue):
-        return self.comment_generator.print_nbest_comment(review,issue)
+        # return self.comment_generator.print_nbest_comment(review,issue)
+        return ["ggg", "ssss"]
         
 
 # class ReviewCommentGenertator:
