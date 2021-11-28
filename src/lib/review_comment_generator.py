@@ -16,7 +16,7 @@ class ReviewCommentGenertator:
         
 
     def generate(self, review, issue):
-        return self.comment_generator.print_comment(review,issue)
+        return self.comment_generator.print_nbest_comment(review,issue)
         
 
 # class ReviewCommentGenertator:
