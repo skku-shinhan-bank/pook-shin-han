@@ -15,11 +15,11 @@ class App:
     CORS(app)
 
     @app.route('/', methods=('GET', ))
-    def index_route():
+    def route_root():
       return 'SKKU Team Shinhan Bank'
 
-    @app.route('/reviews/comment', methods=('POST', ))
-    def review_route():
+    @app.route('/review/comment', methods=('POST', ))
+    def route_review_comment():
       review = request.json['review']
 
       issue_id, total_issue_info = issue_predictor.predict(review)
@@ -37,8 +37,8 @@ class App:
         }
       })
 
-    @app.route('/reviews/comments', methods=('POST', ))
-    def review_route():
+    @app.route('/review/comments', methods=('POST', ))
+    def route_review_comments():
       review = request.json['review']
 
       issue_id, total_issue_info = issue_predictor.predict(review)
